@@ -1,0 +1,123 @@
+header {
+    width: 100%;
+    padding: 28px 8%; /* Padding inicial */
+    position: sticky;
+    top: 0;
+    background-color: var(--color-neutral-0) !important;
+    z-index: 3;
+}
+
+header.shrink {
+    padding: 10px 8%; /* Ajusta o padding quando a navbar estiver menor */
+}
+
+#navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background-color: var(--color-neutral-0) !important;
+}
+
+/* Estilo para links da navbar */
+#nav_list a, #mobile_nav_list a {
+    text-decoration: none;
+    padding: 10px 15px;
+    position: relative;
+    color: #1d1d1dad;
+    font-weight: 600;
+}
+
+/* Efeito de linha embaixo dos links */
+#nav_list a::after, #mobile_nav_list a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary-6, #00b36b);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Links ativos sempre mostram o sublinhado verde */
+#nav_list a.active::after, #mobile_nav_list a.active::after {
+    transform: scaleX(1);
+}
+
+/* Efeito hover para links não-ativos */
+#nav_list a:hover::after, #mobile_nav_list a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Destacar texto do link ativo para melhor visibilidade */
+#nav_list a.active, #mobile_nav_list a.active {
+    color: var(--color-primary-6, #00b36b);
+    font-weight: 700;
+}
+
+#nav_logo {
+    font-size: 24px;
+    color: var(--color-primary-6);
+    width: 100px;
+    height: 100px;
+}
+
+#nav_list {
+    display: flex;
+    list-style: none;
+    gap: 48px;
+}
+
+#mobile_btn {
+    display: none;
+}
+
+#mobile_menu {
+    display: none;
+}
+
+@media screen and (max-width: 1170px) {
+    #nav_list,
+    #navbar .btn-default {
+        display: none;
+    }
+
+    #mobile_btn {
+        display: block;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    #mobile_menu.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #mobile_nav_list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 12px 0px;
+    }
+
+    #mobile_nav_list .nav-item {
+        list-style: none;
+        text-align: center;
+    }
+}
+
+#mobile_menu {
+    display: none;
+}
+
+#mobile_menu.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,230 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --first-color: hsl(82, 60%, 28%);
+  --title-color: hsl(0, 0%, 15%);
+  --text-color: hsl(0, 0%, 35%);
+  --body-color: hsl(0, 0%, 95%);
+  --container-color: hsl(0, 0%, 100%);
+  --body-font: "Poppins", sans-serif;
+  --h2-font-size: 1.25rem;
+  --small-font-size: .813rem;
+}
+
+@media screen and (min-width: 1120px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Título da seção */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--title-color);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--first-color);
+}
+
+/* Carrossel container */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 2rem 0;
+  overflow: visible;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 1.5rem;
+  padding: 1rem 0;
+}
+
+.carousel__track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+}
+
+/* Estilo específico para os clones (para debugging se necessário) */
+.card__article.clone {
+  /* Não precisamos de estilo visual diferente, mas a classe está disponível se necessário */
+}
+
+/* Card styling */
+.card__article {
+  position: relative;
+  min-width: 300px;
+  flex: 0 0 auto;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card__article:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card__img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.card__data {
+  width: 100%;
+  background-color: var(--container-color);
+  padding: 1.5rem;
+  border-radius: 0 0 1.5rem 1.5rem;
+  transition: transform 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: 1rem;
+}
+
+.card__button {
+  display: inline-block;
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--first-color);
+  border-radius: 0.5rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.card__button:hover {
+  background-color: var(--first-color);
+  color: #fff;
+}
+
+/* Botões de navegação */
+.carousel__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.carousel__button {
+  background-color: var(--first-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.carousel__button:hover {
+  background-color: hsl(82, 70%, 35%);
+  transform: scale(1.1);
+}
+
+.carousel__button:active {
+  transform: scale(0.95);
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 95%;
+  }
+  
+  .carousel__track {
+    gap: 15px;
+  }
+  
+  .card__article {
+    min-width: 250px;
+  }
+  
+  .card__img {
+    height: 200px;
+  }
+  
+  .card__data {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card__article {
+    min-width: 220px;
+  }
+  
+  .card__img {
+    height: 180px;
+  }
+  
+  .carousel__buttons {
+    margin-top: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
