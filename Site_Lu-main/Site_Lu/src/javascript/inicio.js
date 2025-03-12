@@ -1,1 +1,0 @@
-// Renamed from index.js to inicio.js
