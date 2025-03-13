@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Obtém o caminho atual e trata casos especiais
         let currentPath = window.location.pathname.split('/').pop();
         
-        // Se estiver na raiz ou se o caminho estiver vazio, considere como "inicio.html"
+        // Se estiver na raiz ou se o caminho estiver vazio, considere como "index.html"
         if (!currentPath || currentPath === '' || currentPath === '/' || currentPath.includes('index')) {
-            currentPath = 'inicio.html';
+            currentPath = 'index.html';
         }
         
         console.log('Página atual:', currentPath);
@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         links.forEach(link => {
             const href = link.getAttribute('href');
             // Compara a URL atual com o href do link
-            if (href === currentPath || 
-                (currentPath === 'inicio.html' && (href === '' || href === '/' || href === 'index.html'))) {
+            if (href.includes(currentPath)) {
                 link.classList.add('active');
                 foundActiveLink = true;
                 console.log('Link ativo:', link.textContent);

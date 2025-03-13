@@ -121,3 +121,9 @@ header.shrink {
     flex-direction: column;
     align-items: center;
 }
+
+/* Custom rule to highlight active navbar item */
+.nav-item a.active {
+    color: green; /* Change to your desired color */
+    border-bottom: 2px solid green; /* Change to your desired style */
+}
