@@ -9,7 +9,7 @@
 
 :root {
     --color-primary-1: #d0e7d0;
-    --color-primary-2: #a1c7a1;
+    --color-primary-2: #8FBC8F; /* Mudança para um tom de verde mais claro */
     --color-primary-3: #72a772;
     --color-primary-4: #438743;
     --color-primary-5: #146714;
@@ -31,7 +31,7 @@ html {
 }
 
 body {
-    background-color: var(--color-neutral-0) !important;
+    background-color: #006400; /* Mudança para um tom de verde mais escuro */
 }
 
 section {

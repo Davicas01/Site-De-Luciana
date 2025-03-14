@@ -94,6 +94,39 @@
     }
 }
 
+#serviços .about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#sobre-mim .about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#sobre-mim .about-img {
+    order: 2;
+}
+
+#sobre-mim .about-text {
+    order: 1;
+}
+
+#serviços .about-img, #sobre-mim .about-img {
+    flex: 1;
+    max-width: 50%;
+}
+
+#serviços .about-text, #sobre-mim .about-text {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+}
+
 @media screen and (max-width: 450px) {
     #phone_button button {
         display: none;

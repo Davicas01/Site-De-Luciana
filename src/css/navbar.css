@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    padding: 28px 8%; /* Padding inicial */
+    padding: 28px 8%;
     position: sticky;
     top: 0;
     background-color: var(--color-neutral-0) !important;
@@ -8,7 +8,7 @@ header {
 }
 
 header.shrink {
-    padding: 10px 8%; /* Ajusta o padding quando a navbar estiver menor */
+    padding: 10px 8%;
 }
 
 #navbar {
@@ -20,7 +20,6 @@ header.shrink {
     background-color: var(--color-neutral-0) !important;
 }
 
-/* Estilo para links da navbar */
 #nav_list a, #mobile_nav_list a {
     text-decoration: none;
     padding: 10px 15px;
@@ -29,7 +28,6 @@ header.shrink {
     font-weight: 600;
 }
 
-/* Efeito de linha embaixo dos links */
 #nav_list a::after, #mobile_nav_list a::after {
     content: "";
     position: absolute;
@@ -42,17 +40,14 @@ header.shrink {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Links ativos sempre mostram o sublinhado verde */
 #nav_list a.active::after, #mobile_nav_list a.active::after {
     transform: scaleX(1);
 }
 
-/* Efeito hover para links não-ativos */
 #nav_list a:hover::after, #mobile_nav_list a:hover::after {
     transform: scaleX(1);
 }
 
-/* Destacar texto do link ativo para melhor visibilidade */
 #nav_list a.active, #mobile_nav_list a.active {
     color: var(--color-primary-6, #00b36b);
     font-weight: 700;
@@ -73,57 +68,93 @@ header.shrink {
 
 #mobile_btn {
     display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-primary-6);
 }
 
 #mobile_menu {
     display: none;
 }
 
-@media screen and (max-width: 1170px) {
-    #nav_list,
-    #navbar .btn-default {
+/* Adicionando estilos responsivos para a navbar */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    #nav_list {
         display: none;
     }
-
+    
     #mobile_btn {
         display: block;
-        border: none;
-        background-color: transparent;
-        font-size: 1.5rem;
-        cursor: pointer;
+        order: 3;
+        font-size: 24px;
+        margin-left: 10px;
+        z-index: 10;
     }
-
+    
+    #mobile_menu {
+        display: none !important; /* Forçando a não exibição */
+        width: 100%;
+        padding: 20px 0;
+        background-color: var(--color-neutral-0);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 99;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
     #mobile_menu.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: block !important; /* Forçando a exibição quando ativo */
     }
-
+    
     #mobile_nav_list {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin: 12px 0px;
-    }
-
-    #mobile_nav_list .nav-item {
+        gap: 10px;
+        width: 100%;
         list-style: none;
+        padding: 0 8%;
+        margin: 0;
+    }
+    
+    #mobile_nav_list a {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 12px 0;
+    }
+    
+    #mobile_menu .btn-default {
+        margin: 20px 8%;
+        width: calc(100% - 16%);
         text-align: center;
     }
+
+    /* Esconder o botão de contato na barra principal em modo responsivo */
+    #navbar > .btn-default {
+        display: none;
+    }
 }
 
-#mobile_menu {
-    display: none;
+@media (min-width: 769px) {
+    #mobile_btn {
+        display: none;
+    }
+    
+    #mobile_menu {
+        display: none;
+    }
 }
 
-#mobile_menu.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#mobile_btn.active i::before {
+    content: "\f00d"; /* FontAwesome 'X' icon */
 }
 
-/* Custom rule to highlight active navbar item */
-.nav-item a.active {
-    color: green; /* Change to your desired color */
-    border-bottom: 2px solid green; /* Change to your desired style */
-}
+

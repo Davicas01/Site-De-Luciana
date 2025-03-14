@@ -15,7 +15,7 @@
 <body>
 <header>
     <nav id="navbar">
-        <a href="../../index.html"><img id="nav_logo" src="/Site_Lu-main/Site_Lu/img/capa2.png" alt=""></a>
+        <a href="../../index.html"><img id="nav_logo" src="/src\LUCIANA SANTIAGO DRIVE\img\capa2.png" alt=""></a>
         <ul id="nav_list">
             <li class="nav-item"><a href="../../index.html">home</a></li>
             <li class="nav-item"><a href="/src/html/projetos.html">projetos</a></li>
@@ -23,19 +23,22 @@
             <li class="nav-item"><a href="/src/html/sobre_mim.html">sobre mim</a></li>
         </ul>
         <button class="btn-default" onclick="window.location.href='https://wa.me/5581996387118';">Contato</button>
-        <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
+        <button id="mobile_btn" onclick="document.getElementById('mobile_menu').classList.toggle('active'); this.classList.toggle('active');">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
     <div id="mobile_menu">
         <ul id="mobile_nav_list">
             <li class="nav-item"><a href="../../index.html">home</a></li>
-            <li class="nav-item"><a href="html/projetos.html">projetos</a></li>
-            <li class="nav-item"><a href="html/servicos.html">serviços</a></li>
-            <li class="nav-item"><a href="html/sobre_mim.html">sobre mim</a></li>
+            <li class="nav-item"><a href="/src/html/projetos.html">projetos</a></li>
+            <li class="nav-item"><a href="/src/html/servicos.html">serviços</a></li>
+            <li class="nav-item"><a href="/src/html/sobre_mim.html">sobre mim</a></li>
         </ul>
         <button class="btn-default" onclick="window.location.href='https://wa.me/5581996387118';">Contato</button>
     </div>
 </header>
-</body>
 
-    <script src="src/javascript/navbar.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="../javascript/navbar.js"></script>
+</body>
 </html>
