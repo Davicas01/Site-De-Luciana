@@ -129,6 +129,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const articles = Array.from(track.querySelectorAll('.card__article'));
         const nextButton = document.querySelector('.carousel__button--right');
         const prevButton = document.querySelector('.carousel__button--left');
+        const indicatorsContainer = document.querySelector('.carousel__indicators');
+        const autoplayControl = document.querySelector('.carousel__autoplay-control');
         
         // Verificar se temos artigos suficientes
         if (articles.length < 1) return;
@@ -147,14 +149,143 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Configurações do carrossel
         const cardWidth = articles[0].getBoundingClientRect().width;
-        const cardMargin = 20; // margem entre cards (conforme CSS)
+        const cardMargin = 30; // margem entre cards (conforme CSS)
         const cardMoveDistance = cardWidth + cardMargin;
         let currentIndex = 1; // Começamos do índice 1 (após o clone do último)
         const totalCards = track.querySelectorAll('.card__article').length;
+        const visibleCards = articles.length; // Número de cartões originais/visíveis
         let isTransitioning = false;
+        let autoplayTimer;
+        let autoplayEnabled = true;
+        const autoplayInterval = 5000; // 5 segundos entre slides
+        
+        // Criar indicadores de slides
+        createIndicators();
+        
+        // Configurar controle de autoplay
+        setupAutoplayControl();
         
         // Posicionar inicialmente o carrossel no primeiro item real (não no clone)
         updateCarousel(false);
+        updateIndicators();
+        
+        // Função para criar os indicadores de slides
+        function createIndicators() {
+            if (!indicatorsContainer) return;
+            
+            // Limpar qualquer indicador existente
+            indicatorsContainer.innerHTML = '';
+            
+            // Criar um indicador para cada slide real (não clones)
+            for (let i = 0; i < visibleCards; i++) {
+                const indicator = document.createElement('div');
+                indicator.classList.add('carousel__indicator');
+                indicator.setAttribute('data-index', i);
+                
+                // Adicionar evento de clique para navegar para o slide correspondente
+                indicator.addEventListener('click', () => {
+                    // +1 porque os índices reais começam após o primeiro clone
+                    goToSlide(i + 1);
+                });
+                
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+        
+        // Função para atualizar os indicadores ativos
+        function updateIndicators() {
+            if (!indicatorsContainer) return;
+            
+            const indicators = indicatorsContainer.querySelectorAll('.carousel__indicator');
+            const activeIndex = currentIndex - 1; // -1 porque os índices reais começam após o primeiro clone
+            
+            // Remover classe ativa de todos os indicadores
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            // Adicionar classe ativa ao indicador atual
+            // Usamos módulo para lidar com o caso de estar no clone
+            const targetIndex = (activeIndex + visibleCards) % visibleCards;
+            if (indicators[targetIndex]) {
+                indicators[targetIndex].classList.add('active');
+            }
+        }
+        
+        // Função para configurar o controle de autoplay
+        function setupAutoplayControl() {
+            if (!autoplayControl) return;
+            
+            // Adicionar ícone de play para quando pausado
+            const playIcon = document.createElement('i');
+            playIcon.classList.add('fas', 'fa-play');
+            autoplayControl.appendChild(playIcon);
+            
+            // Alternar autoplay ao clicar no botão
+            autoplayControl.addEventListener('click', () => {
+                toggleAutoplay();
+            });
+            
+            // Iniciar autoplay
+            startAutoplay();
+        }
+        
+        // Função para iniciar autoplay
+        function startAutoplay() {
+            if (!autoplayEnabled) return;
+            
+            // Limpar timer existente se houver
+            if (autoplayTimer) {
+                clearInterval(autoplayTimer);
+            }
+            
+            // Iniciar novo timer
+            autoplayTimer = setInterval(() => {
+                if (!isTransitioning && document.visibilityState === 'visible') {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            }, autoplayInterval);
+            
+            // Atualizar visual do botão
+            if (autoplayControl) {
+                autoplayControl.classList.remove('paused');
+                autoplayControl.setAttribute('aria-label', 'Pausar apresentação automática');
+            }
+        }
+        
+        // Função para pausar autoplay
+        function pauseAutoplay() {
+            if (autoplayTimer) {
+                clearInterval(autoplayTimer);
+                autoplayTimer = null;
+            }
+            
+            // Atualizar visual do botão
+            if (autoplayControl) {
+                autoplayControl.classList.add('paused');
+                autoplayControl.setAttribute('aria-label', 'Iniciar apresentação automática');
+            }
+        }
+        
+        // Função para alternar autoplay
+        function toggleAutoplay() {
+            autoplayEnabled = !autoplayEnabled;
+            
+            if (autoplayEnabled) {
+                startAutoplay();
+            } else {
+                pauseAutoplay();
+            }
+        }
+        
+        // Função para ir para um slide específico
+        function goToSlide(index) {
+            if (isTransitioning) return;
+            
+            currentIndex = index;
+            updateCarousel();
+        }
         
         // Função para atualizar a posição do carrossel
         function updateCarousel(animate = true) {
@@ -169,6 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             
             track.style.transform = `translateX(${moveAmount}px)`;
+            updateIndicators();
         }
         
         // Função que verifica quando a transição termina
@@ -208,6 +340,52 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
         
+        // Configurar navegação por toque (swipe)
+        setupTouchNavigation();
+        
+        // Configura a navegação por toque (swipe)
+        function setupTouchNavigation() {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                
+                // Pausar autoplay temporariamente durante a interação
+                if (autoplayTimer) {
+                    pauseAutoplay();
+                }
+            }, {passive: true});
+            
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                
+                // Retomar autoplay após a interação, se estiver habilitado
+                if (autoplayEnabled) {
+                    startAutoplay();
+                }
+            }, {passive: true});
+            
+            function handleSwipe() {
+                const swipeThreshold = 50; // mínimo de pixels para considerar um swipe
+                
+                if (touchStartX - touchEndX > swipeThreshold) {
+                    // Swipe para a esquerda - próximo slide
+                    if (!isTransitioning) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                } else if (touchEndX - touchStartX > swipeThreshold) {
+                    // Swipe para a direita - slide anterior
+                    if (!isTransitioning) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                }
+            }
+        }
+        
         // Adicionar resposta a mudanças de tamanho da tela
         window.addEventListener('resize', () => {
             // Recalcular largura do card caso a tela mude de tamanho
@@ -220,12 +398,29 @@ document.addEventListener('DOMContentLoaded', function () {
             track.style.transform = `translateX(${moveAmount}px)`;
         });
         
-        // Adicionar transição automática opcional
-        setInterval(() => {
-            if (!isTransitioning && document.visibilityState === 'visible') {
-                currentIndex++;
-                updateCarousel();
+        // Pausar autoplay quando o usuário interage com o carrossel
+        track.addEventListener('mouseenter', () => {
+            if (autoplayEnabled) {
+                pauseAutoplay();
             }
-        }, 5000); // Muda a cada 5 segundos
+        });
+        
+        // Retomar autoplay quando o usuário sai do carrossel
+        track.addEventListener('mouseleave', () => {
+            if (autoplayEnabled) {
+                startAutoplay();
+            }
+        });
+        
+        // Pausar autoplay quando o documento fica invisível
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                if (autoplayTimer) {
+                    pauseAutoplay();
+                }
+            } else if (autoplayEnabled) {
+                startAutoplay();
+            }
+        });
     }
 });

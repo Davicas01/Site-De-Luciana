@@ -11,49 +11,151 @@
     <link rel="stylesheet" href="../css/rodape.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/projetos1.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/servicos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../javascript/inicio.js"></script>
     <script src="../javascript/servicos.js"></script>
     <script src="../javascript/main.js"></script>
     <script src="../javascript/navbar.js"></script>
-    <script>
-        // Função para incluir HTML
-        function includeHTML() {
-            var z, i, elmnt, file, xhttp;
-            z = document.getElementsByTagName("*");
-            for (i = 0; i < z.length; i++) {
-                elmnt = z[i];
-                file = elmnt.getAttribute("w3-include-html");
-                if (file) {
-                    xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4) {
-                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-                            elmnt.removeAttribute("w3-include-html");
-                            includeHTML();
-                        }
-                    }
-                    xhttp.open("GET", file, true);
-                    xhttp.send();
-                    return;
-                }
-            }
-        }
-
-        // Inicializa a função de incluir HTML quando a página carregar
-        document.addEventListener('DOMContentLoaded', function() {
-            includeHTML();
-        });
-    </script>
-    <title>Projetos - Luciana Santiago</title>
+    <title>Serviços - Luciana Santiago</title>
 </head> 
 <body>
     <div w3-include-html="navbar.html"></div>
-    <script src="../javascript/servicos.js"></script>
-    <script src="../javascript/main.js"></script>
+    
+    <!-- Banner principal -->
+    <section id="servicos-banner">
+        <div class="banner-content">
+            <h1>Nossos Serviços</h1>
+            <p>Transformando espaços verdes com expertise e criatividade</p>
+        </div>
+    </section>
+
+    <!-- Introdução aos serviços -->
+    <section id="servicos-intro">
+        <div class="container">
+            <h2 class="section-title">Serviços Especializados</h2>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>Oferecemos soluções completas de paisagismo, desde o planejamento até a execução, com foco na sustentabilidade e bem-estar. Nossa abordagem combina técnica, estética e funcionalidade para criar espaços que inspiram.</p>
+                </div>
+                <div class="intro-img">
+                    <img src="../LUCIANA SANTIAGO DRIVE/img/WhatsApp_Image_2024-08-24_at_19.13.19-removebg-preview.png" alt="Luciana Santiago">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards de serviços -->
+    <section id="servicos-cards">
+        <div class="container">
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="service-card" data-sr-id="1">
+                    <div class="card-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Projetos de Paisagismo</h3>
+                    <p>Criamos projetos exclusivos, planejados para valorizar cada detalhe do seu jardim ou espaço verde, equilibrando design e funcionalidade.</p>
+                    <a href="#projetos" class="btn-service">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="service-card" data-sr-id="2">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Consultoria de Paisagismo</h3>
+                    <p>Seja para uma orientação inicial ou melhorias no seu jardim, oferecemos consultoria especializada para garantir as melhores soluções paisagísticas.</p>
+                    <a href="#consultoria" class="btn-service">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="service-card" data-sr-id="3">
+                    <div class="card-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Cursos</h3>
+                    <p>Quer aprender mais sobre paisagismo? Oferecemos cursos que combinam teoria e prática, para você desenvolver suas habilidades e criar seus próprios espaços verdes.</p>
+                    <a href="#cursos" class="btn-service">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="service-card" data-sr-id="4">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Venda de Produtos</h3>
+                    <p>Complemente o seu jardim com nossa linha de produtos exclusivos, pensados para facilitar o cuidado e a beleza do seu espaço.</p>
+                    <a href="#produtos" class="btn-service">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O que dizem nossos clientes</h2>
+            <div class="depoimentos-slider">
+                <div class="depoimento">
+                    <div class="depoimento-content">
+                        <p>"O projeto de paisagismo da Luciana transformou completamente nosso espaço externo. A atenção aos detalhes e o conhecimento técnico são impressionantes."</p>
+                        <div class="cliente-info">
+                            <h4>Ana Paula</h4>
+                            <p>Recife - PE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento">
+                    <div class="depoimento-content">
+                        <p>"Participar dos cursos da Luciana me deu uma nova perspectiva sobre paisagismo sustentável. Altamente recomendado para profissionais e entusiastas."</p>
+                        <div class="cliente-info">
+                            <h4>Carlos Eduardo</h4>
+                            <p>Olinda - PE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA - Call to Action -->
+    <section id="cta-servicos">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para transformar seu espaço?</h2>
+                <p>Entre em contato conosco para um orçamento personalizado</p>
+                <a href="https://wa.me/5581996387118" class="btn-default">Fale Conosco</a>
+            </div>
+        </div>
+    </section>
+    
+    <div w3-include-html="rodape.html"></div>
+
+    <script>
+        // Inicializa ScrollReveal para animações
+        document.addEventListener('DOMContentLoaded', function() {
+            ScrollReveal().reveal('.service-card', { 
+                delay: 200,
+                distance: '20px',
+                origin: 'bottom',
+                interval: 100
+            });
+            
+            ScrollReveal().reveal('#servicos-banner', { 
+                delay: 100,
+                distance: '0px',
+                duration: 1000
+            });
+            
+            ScrollReveal().reveal('.depoimento', { 
+                delay: 300,
+                distance: '30px',
+                origin: 'left'
+            });
+        });
+    </script>
 </body>
 </html>

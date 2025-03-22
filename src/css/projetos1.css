@@ -1,0 +1,544 @@
+/* Estilos otimizados para o carrossel de projetos */
+
+/* Carousel container and wrapper */
+.carousel-wrapper {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 10px 0 40px;
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+    border-radius: 16px;
+}
+
+.carousel__track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: grab;
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.carousel__track:active {
+    cursor: grabbing;
+}
+
+/* Card styling with enhanced visual effects */
+.card__article {
+    min-width: 320px;
+    width: calc(33.33% - 20px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    transform: translateY(0) scale(1);
+    transform-origin: center center;
+    will-change: transform, box-shadow;
+}
+
+.card__article:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.card__image-container {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.card__image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.2));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.card__article:hover .card__image-container::after {
+    opacity: 1;
+}
+
+.card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.card__article:hover .card__img {
+    transform: scale(1.08);
+}
+
+.card__data {
+    padding: 22px;
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    transition: transform 0.5s ease;
+}
+
+.card__data::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 4px;
+    background-color: var(--color-primary-6);
+    transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card__article:hover .card__data::before {
+    height: 100%;
+}
+
+.card__description {
+    display: inline-block;
+    color: var(--color-primary-5);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card__article:hover .card__description {
+    transform: translateX(10px);
+}
+
+.card__title {
+    font-size: 1.4rem;
+    color: var(--color-neutral-1);
+    margin-bottom: 15px;
+    font-weight: 600;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
+}
+
+.card__article:hover .card__title {
+    transform: translateX(10px);
+    color: var(--color-primary-6);
+}
+
+.card__button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-primary-6);
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.card__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary-4);
+    transition: left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+}
+
+.card__button:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card__button:hover::before {
+    left: 0;
+}
+
+/* Controls with improved layout and animations */
+.carousel__controls {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel__buttons {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.carousel__button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-primary-2);
+    color: var(--color-primary-6);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary-3);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+}
+
+.carousel__button i {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.carousel__button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    color: var(--color-primary-6);
+}
+
+.carousel__button:hover::before {
+    transform: scale(1);
+}
+
+.carousel__button:hover i {
+    transform: scale(1.2);
+}
+
+.carousel__button:active {
+    transform: translateY(0);
+}
+
+/* Enhanced indicators with animations */
+.carousel__indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.carousel__indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-primary-2);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.carousel__indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: 2px solid var(--color-primary-6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel__indicator.active {
+    background-color: var(--color-primary-6);
+    transform: scale(1.1);
+    width: 14px;
+    height: 14px;
+}
+
+.carousel__indicator.active::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+}
+
+.carousel__indicator:hover {
+    transform: scale(1.2);
+}
+
+/* Autoplay control with improved visibility */
+.carousel__autoplay-control {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-primary-2);
+    color: var(--color-primary-6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+.carousel__autoplay-control:hover {
+    background-color: var(--color-primary-3);
+    transform: scale(1.1) rotate(360deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.carousel__autoplay-control .fa-play,
+.carousel__autoplay-control .fa-pause {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel__autoplay-control .fa-play {
+    display: none;
+}
+
+.carousel__autoplay-control .fa-pause {
+    display: block;
+}
+
+.carousel__autoplay-control.paused .fa-play {
+    display: block;
+}
+
+.carousel__autoplay-control.paused .fa-pause {
+    display: none;
+}
+
+/* Slide transition effect */
+.carousel__track .card__article {
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel__track.transitioning .card__article {
+    opacity: 0.7;
+    transform: scale(0.95);
+}
+
+.carousel__track.transitioning .card__article.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Responsividade do carrossel */
+@media screen and (max-width: 1200px) {
+    .card__article {
+        width: calc(50% - 15px);
+        min-width: 280px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .card__article {
+        width: calc(50% - 15px);
+        min-width: 280px;
+    }
+    
+    .carousel__autoplay-control {
+        top: -60px;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card__article {
+        width: 85%;
+        min-width: 260px;
+    }
+    
+    .carousel__track {
+        gap: 20px;
+    }
+    
+    .carousel__controls {
+        margin-top: 20px;
+    }
+    
+    .carousel__button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card__article {
+        width: 90%;
+        min-width: 220px;
+    }
+    
+    .card__data {
+        padding: 15px;
+    }
+    
+    .card__title {
+        font-size: 1.2rem;
+    }
+    
+    .carousel__buttons {
+        gap: 10px;
+    }
+    
+    .carousel__button {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .carousel__indicator {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Adicionando animações CSS adicionais */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Estilos para transições mais suaves do carrossel */
+.carousel__track {
+    // ...existing code...
+}
+
+.carousel__track:active {
+    // ...existing code...
+}
+
+/* Efeitos adicionais para cards */
+.card__article {
+    // ...existing code...
+}
+
+.card__article.focus {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.18);
+    z-index: 5;
+}
+
+.card__article.active {
+    z-index: 3;
+}
+
+/* Efeitos para arrastar o carrossel */
+.carousel__track.dragging,
+.carousel__track.touching {
+    cursor: grabbing;
+}
+
+/* Estilos para transições suaves */
+.carousel__track.transitioning .card__article {
+    filter: blur(0.5px);
+}
+
+.carousel__track.transitioning .card__article.active {
+    filter: none;
+    z-index: 3;
+}
+
+/* Efeitos visuais extras para botões */
+.carousel__button.clicked {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.carousel__autoplay-control.clicked {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.carousel__autoplay-control.active-animation {
+    animation: pulse 0.5s ease;
+}
+
+/* Efeito para quando o carrossel entra no viewport */
+.carousel__track.visible .card__article {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: calc(var(--card-index, 0) * 100ms);
+}
+
+/* Efeito para o carregamento inicial do carrossel */
+.carousel__indicator {
+    animation: scaleIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: calc(var(--dot-index, 0) * 100ms);
+}
+
+/* Melhorias nos efeitos de hover dos controles */
+.carousel__button:hover i {
+    animation: pulse 1s infinite;
+}
+
+.carousel__autoplay-control:hover {
+    animation: pulse 1s infinite;
+}
+
+/* Resto do código responsivo existente */
+@media screen and (max-width: 1200px) {
+    // ...existing code...
+}

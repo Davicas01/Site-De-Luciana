@@ -99,3 +99,497 @@
         display: none;
     }
 }
+
+/* Banner principal */
+#sobre-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../LUCIANA SANTIAGO DRIVE/_LUCIANA SANTIAGO (1)/_LUCIANA SANTIAGO/DESTAQUES_LUCIANA SANTIAGO/CAPA.png');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 60px;
+}
+
+#sobre-banner .banner-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+#sobre-banner h1 {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+#sobre-banner p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Perfil */
+#perfil {
+    padding: 60px 0;
+}
+
+.perfil-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+.perfil-imagem {
+    flex: 0 0 300px;
+    position: relative;
+}
+
+.perfil-imagem img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.credencial {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primary-6);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-info {
+    flex: 1;
+}
+
+.perfil-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: var(--color-primary-6);
+}
+
+.perfil-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--color-neutral-1);
+    font-weight: 400;
+}
+
+.perfil-descricao {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primary-2);
+    color: var(--color-primary-6);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--color-primary-6);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Formação Acadêmica */
+#formacao {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-primary-6);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-primary-6);
+}
+
+.formacao-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.formacao-timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    height: 100%;
+    width: 2px;
+    background-color: var(--color-primary-2);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 30px;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primary-6);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+.timeline-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-neutral-1);
+}
+
+.timeline-content p {
+    margin: 0;
+    color: #555;
+}
+
+/* Experiência Profissional */
+#experiencia {
+    padding: 60px 0;
+}
+
+.experiencia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.experiencia-card {
+    background-color: white;
+    padding: 30px 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experiencia-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--color-primary-2);
+    color: var(--color-primary-6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 20px;
+}
+
+.experiencia-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--color-neutral-1);
+}
+
+.experiencia-card p {
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Filosofia de Trabalho */
+#filosofia {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.filosofia-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.filosofia-texto {
+    flex: 1;
+}
+
+.filosofia-descricao {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.filosofia-imagem {
+    flex: 0 0 400px;
+}
+
+.filosofia-imagem img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pilares-lista {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0;
+}
+
+.pilares-lista li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.pilares-lista li:hover {
+    transform: translateX(10px);
+}
+
+.pilar-icone {
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primary-2);
+    color: var(--color-primary-6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.pilar-texto {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Serviços */
+#servicos-oferecidos {
+    padding: 60px 0;
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.servico-item {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+    padding: 30px;
+}
+
+.servico-item:hover {
+    transform: translateY(-10px);
+}
+
+.servico-icone {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-primary-2);
+    color: var(--color-primary-6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 25px;
+}
+
+.servico-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--color-neutral-1);
+}
+
+.servico-item p {
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.btn-saiba-mais {
+    display: inline-block;
+    background-color: var(--color-primary-6);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-saiba-mais:hover {
+    background-color: #26856f;
+    transform: scale(1.05);
+}
+
+/* CTA - Call to Action */
+#contato-cta {
+    padding: 60px 0;
+    background: linear-gradient(to right, var(--color-primary-6), #26856f);
+    color: white;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-contato {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    color: var(--color-primary-6);
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-contato:hover {
+    background-color: var(--color-primary-2);
+    transform: translateY(-5px);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    #sobre-banner h1 {
+        font-size: 2.8rem;
+    }
+    
+    .perfil-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .perfil-imagem {
+        flex: 0 0 250px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .filosofia-container {
+        flex-direction: column;
+    }
+    
+    .filosofia-imagem {
+        order: -1;
+        flex: 0 0 300px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    #sobre-banner {
+        height: 300px;
+    }
+    
+    #sobre-banner h1 {
+        font-size: 2.3rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .perfil-info h2 {
+        font-size: 2rem;
+    }
+    
+    .perfil-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .experiencia-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .servicos-grid {
+        grid-template-columns: 1fr;
+    }
+}

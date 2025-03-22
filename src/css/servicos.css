@@ -1,0 +1,383 @@
+/* filepath: c:\Users\daavi\Downloads\Site_Lu-main\src\css\servicos.css */
+/* Estilos para a página de serviços */
+
+/* Banner principal */
+#servicos-banner {
+    background: linear-gradient(rgba(0, 71, 0, 0.7), rgba(0, 71, 0, 0.8)), url('../LUCIANA SANTIAGO DRIVE/_LUCIANA SANTIAGO (1)/_LUCIANA SANTIAGO/DESTAQUES_LUCIANA SANTIAGO/PROJETOS.png');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin-top: -20px;
+}
+
+.banner-content {
+    z-index: 1;
+    padding: 0 20px;
+    max-width: 800px;
+}
+
+#servicos-banner h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#servicos-banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Seção de introdução */
+#servicos-intro {
+    padding: 70px 8%;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.intro-text {
+    flex: 1;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+.intro-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.intro-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards de serviços */
+#servicos-cards {
+    background-color: #f9f9f9;
+    padding: 70px 8%;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.service-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: var(--color-primary-6);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.service-card:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--color-primary-1);
+    opacity: 0.1;
+    z-index: -1;
+    transition: height 0.5s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-card:hover:before {
+    transform: scaleX(1);
+}
+
+.service-card:hover:after {
+    height: 100%;
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-primary-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 2.2rem;
+    color: var(--color-primary-6);
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover .card-icon {
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary-6);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover h3 {
+    transform: translateY(-5px);
+}
+
+.service-card p {
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover p {
+    transform: translateY(-5px);
+}
+
+.btn-service {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: transparent;
+    color: var(--color-primary-6);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    border: 2px solid var(--color-primary-6);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-service:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-primary-6);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.btn-service i {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.btn-service:hover {
+    color: white;
+}
+
+.btn-service:hover:before {
+    width: 100%;
+}
+
+.btn-service:hover i {
+    transform: translateX(5px);
+}
+
+/* Depoimentos */
+#depoimentos {
+    padding: 70px 8%;
+    background-color: #fff;
+}
+
+.depoimentos-slider {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 20px 0;
+    margin-top: 40px;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;  /* para IE e Edge */
+    scrollbar-width: none;  /* para Firefox */
+}
+
+.depoimentos-slider::-webkit-scrollbar {
+    display: none; /* para Chrome, Safari e Opera */
+}
+
+.depoimento {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 500px;
+    scroll-snap-align: start;
+}
+
+.depoimento-content {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.depoimento-content:before {
+    content: '\201C';
+    font-size: 5rem;
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    color: var(--color-primary-2);
+    opacity: 0.5;
+}
+
+.depoimento-content p {
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.cliente-info h4 {
+    color: var(--color-primary-6);
+    margin-bottom: 5px;
+}
+
+.cliente-info p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #666;
+}
+
+/* CTA */
+#cta-servicos {
+    background-color: var(--color-primary-2);
+    padding: 70px 8%;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    #servicos-banner {
+        height: 300px;
+    }
+
+    #servicos-banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .intro-content {
+        flex-direction: column;
+    }
+
+    .intro-img {
+        order: -1;
+    }
+
+    .service-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    #servicos-banner h1 {
+        font-size: 2rem;
+    }
+
+    #servicos-banner p {
+        font-size: 1rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .cta-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .service-card {
+        padding: 20px 15px;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .depoimento {
+        max-width: 100%;
+    }
+
+    .depoimento-content {
+        padding: 20px;
+    }
+}
